@@ -17,7 +17,7 @@ public class RemoteClient {
     public ArrayList<DataOutputStream> sockete = new ArrayList<DataOutputStream>();
     
     public static void main(String[] args) throws IOException {
-        new RemoteClient(1488);
+        new RemoteClient(1041);
     }
 
     public RemoteClient(int port) throws IOException {
@@ -38,7 +38,7 @@ public class RemoteClient {
             Socket socket = serverSocket.accept();
             sockete.add(new DataOutputStream(socket.getOutputStream()));
             
-            Thread T= new Thread(new ServerThread(socket,sockete,count));
+            Thread T= new Thread(new ServerThread(socket,sockete,count, connected));
             T.start();
             
             connected=true;
